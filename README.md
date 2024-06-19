@@ -1,13 +1,44 @@
-# KELLY - Scantronic 994x Keypad Integration into ESPHome and Home Assistant
-
-Integrates the Scantronic 9940 or 9441 Keypad into ESPHome and Home Assistant. (They are the same except that 9441 does not have a tag reader).  
+# Project KELLY - Integrate Scantronic 994x Keypads into ESPHome and Home Assistant
 
 
-The plan is to 
-1. Build the necesary hardware to conect the keypad to an ESP32 microprocessor
+## Description of the Scantronic 9940 and 9941 Keypads 
+
+_See also the [Installation Guide](https://www.alertelectrical.com/media/productattachment/0/4429/42999419940rkp.pdf)_
+
+The unit measures 115 x 115 x 24 deep. The lower half is s flap that can be lowered to access the keypad. 
+
+![Screenshot 2024-06-19 at 10 21 45](https://github.com/AndySymons/KELLY-Scantronic-9940-Keypad/assets/14819812/eea9b076-7bbd-4eea-86d1-26fb86a365fe) ![9941EN](https://github.com/AndySymons/KELLY-Scantronic-9940-Keypad/assets/14819812/0adfe867-deed-4dde-827a-0b281ed732ec)
+
+It comprises:  
+- Three indicator LEDs top left with icons: exclamation (user alert), spanner (hardware fault), and wavy line (power on, flashes for battery backup)
+- A 16 x 2 LCD display with backlight
+- Four buttons labelled A, B, C, and D
+- Under the flap, a 12-button keypad: numbers 0 to 9 plus tick (enter) and cross (exclude zones). It has a backlight. 
+- A tamper microswitch on the back that switches if the unit is removed from the wall
+- A sounder inside  
+- A tag reader inside the 9940 model
+
+Inside it has connections (from right to left seen from the back): 
+- Four to connect to the controller:  "OV, 12V, CLK, DATA"
+- A pair "ET" = Exit Terminate (e.g. a switch that when closed confirms alarm arming) 
+- A pair "Ext tamper" - for an external tamper switch (bridged if not used)
+- A pair "Panic" - for a panic button (bridged if not used) 
+
+Scantronic recommends connection with normal alarm cable. The maximum distance between any kepad and the controller is 200m
+
+## The plan 
+
+1. Build the necesary hardware to connect the keypad to an ESP32 microprocessor (running ESPHome) 
 1. Reverse-engineer the protocol between the alarm controller and the keypad using samples of each
-1. Code the protocol into an ESPhome Custom Device
-2. Build whatever further integrations are necessary to make the Keypad appear to Home Assistant as (a) an alarm keypad compatible with the native Alarm and with the Alarmo add-on (b) an LED display (c) a tag reader (model 9440 only) (d) switches or sensors for any remainng Scantronic 9940 Keypad features. 
+1. Code the protocol into an ESPHome Custom Device
+2. Build whatever further integrations are necessary to make the Keypad appear to Home Assistant as
+    - an alarm keypad compatible with the native [Manual Alarm](https://www.home-assistant.io/integrations/manual/) and with the [Alarmo add-on](https://github.com/nielsfaber/alarmo), if possible including A, B, C, D as buttons for selecting the arming level 
+    - an LCD display
+    - a [tag reader](https://www.home-assistant.io/integrations/tag/) (model 9440 only)
+    - The three LEDs and the backlights as lights
+    - the tamper microswitch, panic button, external tamper and exit terminate switches as binary sensors  
+    
+The kepad could be used standalone or as part of a Scantronic 9651 hardwired alarm replacement -- see [Project HARVIE](https://github.com/AndySymons/HARVIE-Hardwired-Alarm-Replacement-Board)
 
 It is a part-time project, so could take a while; but watch this space, and please share any info you may have on this subject :-)  
 
