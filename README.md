@@ -116,6 +116,8 @@ I use channels 0, 2, 4 and 6 simply because these are the easiet to wire up on a
 Initial results confirm the first oscilloscope tests. Data is transmitted in 8-bit packets with no ACK. Lines are normally high. The data line is pulled down to start a new package. 
 The clock appears to always come from the controller - so far I have not seen any signal on the Clock Rx channel.
 
+![Screenshot 2024-09-22 at 17 20 21](https://github.com/user-attachments/assets/def8c75b-b798-4314-8d5a-d338cee4f151)
+
 My "reverse-engineering workbench" now looks like this ... 
 
 ![KELLY reverse-engineering workbench](https://github.com/user-attachments/assets/1bfcd246-55ab-4a1b-8762-9dd195511a62)
