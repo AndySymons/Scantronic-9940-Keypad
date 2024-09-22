@@ -100,7 +100,7 @@ My first idea was to connect two line drivers back-to-back and have one of them 
 
 The design finally adopted is a special combination of two P82B96 chips connected one after the other. Inputs and outputs all use Vcc=15V*. 
 
-![Screenshot 2024-09-22 at 16 56 18](https://github.com/user-attachments/assets/832da217-08d3-4dca-9e09-3a39fff47dad)
+![Screenshot 2024-09-22 at 17 04 30](https://github.com/user-attachments/assets/d588116c-8920-48d3-b698-66e6e721f15f)
 
 I assembled these on one board complete with pullup resistors, voltage dividers to provide 3V3 signal levels to the logic analyzer, and a 10-pin box header to connect directly to the logic analyzer interface with a ribbon cable rather than fiddly probes etc. 
 I also included plenty of Test Point eyelets to easily connect an osclloscope or voltmeter. 
