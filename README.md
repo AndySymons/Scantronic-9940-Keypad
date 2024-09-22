@@ -96,15 +96,18 @@ The optocoupler solution appears more robust, but takes up more board space and 
 In order to analyse the data comm protocol in detail I need to be able to separate the Tx and Rx directions of both channels, clock and data.   
 My first idea was to connect two line drivers back-to-back and have one of them be the optocoupler version with separate Tx and Rx. This failed because 
 - when the line drivers are connected back-to-back, the special logic levels that prevent feedback and bus lockup also ensure that the signal output of one (Sx, Sy) is not recognised as input by the other (Sx, Sy) -- so signals are not propagated.
-- altough Tx and Rx apparently separated, this circuit does not prevent the output being recognised as input, so is of limited use. 
+- altough Tx and Rx are apparently separated, this circuit does not prevent the output being recognised and fed back as input, so is of little use. 
 
-The design finally adopted is a special combination of two P82B96 chips connected one after the other. Inputs and outputs use Sx and Sy, as well as Tx and Ty at Vcc=15V. 
+The design finally adopted is a special combination of two P82B96 chips connected one after the other. Inputs and outputs all use Vcc=15V*. 
 
-![Screenshot 2024-09-22 at 16 25 06](https://github.com/user-attachments/assets/b7e55feb-baac-4777-a9f9-a3565142d08d)
+![Screenshot 2024-09-22 at 16 56 18](https://github.com/user-attachments/assets/832da217-08d3-4dca-9e09-3a39fff47dad)
 
-I assembled these on one board complete with pullup resistors, voltage dividers to provide 3V3 signal levels to the logic analyzer for four channels -- Clock Tx and Rx, Data Tx and Rx -- and a 10-pin box header that is used to connect dirctly to the logic analyzer interface without fiddly probes etc. I also included plenty of Test Point eyelets to easily connect an osclloscope or voltmeter. 
+I assembled these on one board complete with pullup resistors, voltage dividers to provide 3V3 signal levels to the logic analyzer, and a 10-pin box header to connect directly to the logic analyzer interface with a ribbon cable rather than fiddly probes etc. 
+I also included plenty of Test Point eyelets to easily connect an osclloscope or voltmeter. 
+
 ![KELLY (1)](https://github.com/user-attachments/assets/32bd6646-ba2a-4abf-a10d-ae858b08e086)
 
+- *Note: an alternative design would be to pull up the four logic analyzer sample lines - Tx, Rx, Ty, and Ry - to a 3V3 power supply, but I found it simpler to use four potentiometers as voltage dividers rather than add a power regulator to my board.
 
 #### Ph1 Step 6: Logic analyzer setup (COMPLETED)
 I use a generic unbranded Chinese 8-channel logic analyzer interface together with the Sigrok Pulseview (free) software running on an iMac. 
@@ -114,6 +117,7 @@ Initial results confirm the first oscilloscope tests. Data is transmitted in 8-b
 The clock appears to always come from the controller - so far I have not seen any signal on the Clock Rx channel.
 
 My "reverse-engineering workbench" now looks like this ... 
+
 ![KELLY reverse-engineering workbench](https://github.com/user-attachments/assets/1bfcd246-55ab-4a1b-8762-9dd195511a62)
 
 
