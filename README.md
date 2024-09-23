@@ -6,14 +6,7 @@ The objective of this project is to be able to use the Scantronic 994x Keypads i
 
 I have no specification or circuit schematic, so the first phase of the project is to reverse engineer the data communication protocol. 
 The second phase will be to build the necessary hardware and software components for the ESPHome and Home Assistant environment, provisionally expected to include: 
-1. A hardware bus interface / line driver to connect the keypad(s) to an ESP32 procesessor
-2. An ESPHome Custom Device
-2. Integrations that make the Keypad appear to Home Assistant as
-    - an alarm keypad compatible with the native [Manual Alarm](https://www.home-assistant.io/integrations/manual/) and with the [Alarmo add-on](https://github.com/nielsfaber/alarmo), if possible including A, B, C, D as buttons for selecting the arming level 
-    - an LCD display
-    - a [tag reader](https://www.home-assistant.io/integrations/tag/) (model 9440 only)
-    - The three LEDs and the backlights as lights
-    - the tamper microswitch, panic button, external tamper and exit terminate switches as binary sensors  
+
     
 It is a part-time project, so could take a while; but watch this space, and please share any info you may have on this subject :-)  
 
@@ -42,6 +35,20 @@ Inside it has connections (from right to left seen from the back):
 - A pair "Panic" - for a panic button (bridged if not used) 
 
 Scantronic recommends connection with normal alarm cable. The maximum distance between any kepad and the controller is 200m
+
+## Foreseen project products 
+
+| No. | Product                      | Medium                   | Location                    | Status  | Notes                                       |
+|-----|------------------------------|--------------------------|-----------------------------|---------|------------------------------------------------|
+| 1.  | Design(s) for bus interface (line driver) hardware to connect the keypad(s) to an ESP32 procesessor | Schematic and prototype  | On this Wiki | Complete | Two options available: with and without optocoupling  |
+| 2.  | Design(s) for a 'bus intercept' circuit to connect to logic analyzer | Schematic and prototype | On this Wiki | Complete | |
+| 3.  | Pulseview protocol decoder   | Python code              | On this Wiki | Pending | Might copy to Sigrok when complete, with the protocol description. |
+| 4.  | Description of the protocol  | Wiki (text and diagrams) | On this Wiki | Pending | Might copy to Sigrok when complete, with the protocol decoder.     |
+| 5.  | An ESPHome Custom Device     | t.b.d. (as required by ESPHome) | On this Wiki | Future ||
+| 6.  | HA keypad integration        | t.b.d. (as required by HA) | On this Wiki | Future | Should be compatible with the native [Manual Alarm](https://www.home-assistant.io/integrations/manual/) and with the [Alarmo add-on](https://github.com/nielsfaber/alarmo), if possible including A, B, C, D as buttons for selecting the arming level |
+| 7.  | HA LCD display integration   | t.b.d. (as required by HA) | On this Wiki | Future | 
+| 8.  | HA tag reader integration    | t.b.d. (as required by HA) | On this Wiki | Future | Model 9440 only. See [tag reader](https://www.home-assistant.io/integrations/tag/) | 
+| 9.  | HA integration of remaining buttons and lights | t.b.d. (as required by HA) | On this Wiki | Future | Three LEDs and the backlights as lights. Tamper microswitch, panic button, external tamper and exit terminate switches as binary sensors | 
 
 ## PHASE 1: reverse-engineering the communications protocol - steps and status at 21 September 2024
 
