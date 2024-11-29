@@ -17,7 +17,7 @@ The unit measures 115 x 115 x 24 deep. The lower half is s flap that can be lowe
 
 Up to four can be conected to a Scantronic 9651 alarm controller with normal alarm cable. The maximum distance between any kepad and the controller is 200m. 
 
-The keypad has several features that make it atractive as a stand-alone product. Alternatively, a result if this project will be that existing keypads can be retained in a system using the [HARVIE replacment board](https://github.com/AndySymons/HARVIE-Hardwired-Alarm-Replacement-Board).  
+The keypad has several features that make it atractive as a stand-alone product. Alternatively, a result if this project will be that existing keypads can be retained in a system using the [HARVIE replacement board](https://github.com/AndySymons/HARVIE-Hardwired-Alarm-Replacement-Board).  
 
 
 For details [see the Wiki](https://github.com/AndySymons/KELLY-Scantronic-994x-Keypad/wiki)
